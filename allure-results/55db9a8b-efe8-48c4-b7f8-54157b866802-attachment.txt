@@ -1,0 +1,5 @@
+{
+  "error": "no such element",
+  "message": "no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"span.fa-chevron-down > span\"}\n  (Session info: chrome=122.0.6261.95)",
+  "stacktrace": "\tGetHandleVerifier [0x00007FF6B8CBAD22+56930]\n\t(No symbol) [0x00007FF6B8C2F622]\n\t(No symbol) [0x00007FF6B8AE42E5]\n\t(No symbol) [0x00007FF6B8B298ED]\n\t(No symbol) [0x00007FF6B8B29A2C]\n\t(No symbol) [0x00007FF6B8B6A967]\n\t(No symbol) [0x00007FF6B8B4BCDF]\n\t(No symbol) [0x00007FF6B8B681E2]\n\t(No symbol) [0x00007FF6B8B4BA43]\n\t(No symbol) [0x00007FF6B8B1D438]\n\t(No symbol) [0x00007FF6B8B1E4D1]\n\tGetHandleVerifier [0x00007FF6B9036AAD+3709933]\n\tGetHandleVerifier [0x00007FF6B908FFED+4075821]\n\tGetHandleVerifier [0x00007FF6B908817F+4043455]\n\tGetHandleVerifier [0x00007FF6B8D59756+706710]\n\t(No symbol) [0x00007FF6B8C3B8FF]\n\t(No symbol) [0x00007FF6B8C36AE4]\n\t(No symbol) [0x00007FF6B8C36C3C]\n\t(No symbol) [0x00007FF6B8C268F4]\n\tBaseThreadInitThunk [0x00007FFAB9A5257D+29]\n\tRtlUserThreadStart [0x00007FFABB06AA58+40]\n"
+}
