@@ -13,15 +13,24 @@ export default class Page {
     * Opens a sub page of the page
     * @param path path of the sub page (e.g. /path/to/page.html)
     */
-    protected open(path: string) {
-        return browser.url(`https://www3.animeflv.net/${path}`)
+    protected async open(path: string) {
+        return await browser.url(`https://www3.animeflv.net/${path}`)
     }
 
+    /**
+     * Method to click on a web element
+     * @param element web element subject of the click
+     */
     protected async performClick(element: WebdriverIO.Element) {
-        element.click();
-        closeUnwantedTabs('www3.animeflv.net');
+        await element.click();
+        await closeUnwantedTabs('www3.animeflv.net');
     }
 
+    /**
+     * Method to type the text in a web element
+     * @param element web element where the text is going to be type
+     * @param text string value to type
+     */
     protected typeText(element: WebdriverIO.Element, text: string) {
         element.setValue(text);
     }
@@ -37,6 +46,11 @@ export default class Page {
 
 }
 
+/**
+ * Function to identify, close and switch ads tabs. This allows to close ads tabs and switch 
+ * back to the page with that contains the domain.
+ * @param mainDomain URL path that all the web pages of the website must contains
+ */
 async function closeUnwantedTabs(mainDomain: string) {
     const allTabs = await browser.getWindowHandles(); // Get all open tabs/windows
     for (const tab of allTabs) {
@@ -45,16 +59,11 @@ async function closeUnwantedTabs(mainDomain: string) {
 
         // Check if the current tab's domain is different from the main domain
         if (!currentUrl.includes(mainDomain)) {
-            await await browser.closeWindow(); // Close the current tab if it's not part of the main domain
+            await browser.closeWindow(); // Close the current tab if it's not part of the main domain
             const remainingTabs = await browser.getWindowHandles();
             await browser.switchToWindow(remainingTabs[0]);
         }
     }
 
-    // After closing unwanted tabs, switch back to the first tab
-    // const remainingTabs = await browser.getWindowHandles();
-    // if (remainingTabs.length > 0) {
-    //     await browser.switchToWindow(remainingTabs[0]);
-    // }
 }
 

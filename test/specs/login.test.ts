@@ -4,7 +4,6 @@ describe('The login feature ', () => {
     it('should login from the Home page "login div', async () => {
         await HomePage.open();
         await browser.maximizeWindow();
-
         await HomePage.pressLoginButton();
         await HomePage.typeEmail('JPQM4897@hotmail.com');
         await HomePage.typePassword('juegos');

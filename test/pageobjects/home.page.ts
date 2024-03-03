@@ -3,11 +3,12 @@ import Page from './page.ts'
 
 class HomePage extends Page {
 
-    get loginButton() { return $('label.Button'); }
+    get loginButton() { return $('span.fa-user'); }
     get submitButton() { return $('button[type="submit"]'); }
     get emailBox() { return $('input[name="email"]'); }
     get password() { return $('input[name="password"]') }
     get welcomeLabel() { return $('span.fa-chevron-down > span') }
+    get registrationLink() { return $('a[href="/auth/sign_up"]') }
 
 
 
@@ -16,10 +17,15 @@ class HomePage extends Page {
      * @param path is the complement text to the main url path of the page
      * @returns 
      */
-    public open() {
-        return super.open('');
+    public async open() {
+        return await super.open('');
     }
 
+    /**
+     * 
+     * @returns the text that should appears in the login div in the home page
+     *          after a successfully login process. 
+     */
     public async getWelcomeText(): Promise<string> {
         const text = (await this.welcomeLabel).getText();
         console.log(text);
@@ -38,6 +44,13 @@ class HomePage extends Page {
      */
     public async pressSubmitButton() {
         this.performClick(await this.submitButton);
+    }
+
+    /**
+     * Method to press the registration link in the login div
+     */
+    public async pressRegistrationLink() {
+        this.performClick(await this.registrationLink)
     }
 
     /**
