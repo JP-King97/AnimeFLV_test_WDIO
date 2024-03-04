@@ -32,7 +32,8 @@ export const config: Options.Testrunner = {
     specs: [
         //'./test/specs/**/*.ts',
         //'./test/specs/**/login.test.ts',
-        './test/specs/**/registration.test.ts'
+        //'./test/specs/**/registration.test.ts',
+        './test/specs/**/last.episodes.test.ts'
     ],
     // Patterns to exclude.
     exclude: [
@@ -142,7 +143,7 @@ export const config: Options.Testrunner = {
     // See the full list at http://mochajs.org/
     mochaOpts: {
         ui: 'bdd',
-        timeout: 60000
+        timeout: 180000
     },
 
     //

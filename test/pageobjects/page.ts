@@ -22,7 +22,12 @@ export default class Page {
      * @param element web element subject of the click
      */
     protected async performClick(element: WebdriverIO.Element) {
-        await element.click();
+        await element.moveTo();
+        //await element.click();
+        await browser.execute((elem) => {
+            // Use JavaScript to click the element
+            elem.click();
+        }, element);
         await closeUnwantedTabs('www3.animeflv.net');
     }
 

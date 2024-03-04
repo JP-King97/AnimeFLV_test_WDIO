@@ -9,6 +9,7 @@ class HomePage extends Page {
     get password() { return $('input[name="password"]') }
     get welcomeLabel() { return $('span.fa-chevron-down > span') }
     get registrationLink() { return $('a[href="/auth/sign_up"]') }
+    get listLastEpisodes() { return $('ul.ListEpisodios') }
 
 
 
@@ -69,7 +70,26 @@ class HomePage extends Page {
         this.typeText(await this.password, password);
     }
 
+    public async getAnimeNames(element: WebdriverIO.Element): Promise<string> {
+        const name = await element.getText();
+        return name;
+    }
 
+    // public async getAllLastAnimesNames() {
+    //     // 1. Get all elements matching the selector ul.ListEpisodios>li>a
+    //     await browser.pause(3000);
+    //     const lastEpisodes = await this.listLastEpisodesName;
+    //     const names = await lastEpisodes.map(async (e) => await e.getText())
+    //     names.forEach((e) => {
+    //         console.log(e)
+    //     });
+    //     return names;
+    // }
+
+    public async clickLastEpisode(webElement: WebdriverIO.Element) {
+        webElement.waitForClickable();
+        await this.performClick(webElement);
+    }
 
 }
 
