@@ -1,0 +1,9 @@
+{
+  "script": "return ((elem) => {\n            // Use JavaScript to click the element\n            elem.click();\n        }).apply(null, arguments)",
+  "args": [
+    {
+      "element-6066-11e4-a52e-4f735466cecf": "f.4ECAE26EF36DBBA0BD696E08B8680D2D.d.F4070076DF46F8FC6C787F1DCD5578EB.e.62",
+      "ELEMENT": "f.4ECAE26EF36DBBA0BD696E08B8680D2D.d.F4070076DF46F8FC6C787F1DCD5578EB.e.62"
+    }
+  ]
+}
