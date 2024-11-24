@@ -1,0 +1,1 @@
+[{"uid":"15c1ea31b22da6d0","name":"matches the miniature info with the episode page info","time":{"start":1732487324133,"stop":1732487365113,"duration":40980},"status":"passed","severity":"normal"},{"uid":"e8ba324212f6a0ec","name":"must contains 20 elements","time":{"start":1732487321794,"stop":1732487324132,"duration":2338},"status":"passed","severity":"normal"}]
