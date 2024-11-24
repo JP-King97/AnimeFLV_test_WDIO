@@ -1,5 +1,7 @@
+import episodePage from "../pageobjects/episode.page.ts";
 import EpisodePage from "../pageobjects/episode.page.ts";
 import homePage from "../pageobjects/home.page.ts"
+import page from "../pageobjects/page.ts";
 
 describe('The last episodes list', () => {
 
@@ -22,7 +24,7 @@ describe('The last episodes list', () => {
     it('matches the miniature info with the episode page info', async () => {
 
         await browser.pause(3000);
-        const lastEpisodesNames = await (await homePage.listLastEpisodes).$$('strong');
+        const lastEpisodesNames = (await homePage.listLastEpisodes).$$('strong');
         const names = await lastEpisodesNames.map(async (e) => await e.getText());
 
         const lastEpisodesNumber = await (await homePage.listLastEpisodes).$$('span:nth-child(2)');
@@ -32,6 +34,7 @@ describe('The last episodes list', () => {
         let lastEpisodesTitles: string[] = [];
 
         for (let i = 0; i < names.length; i++) {
+            console.log("last episode #" + i)
             console.log(names[i] + ": " + epNumber[i]);
             (await homePage.listLastEpisodes).waitForDisplayed();
             const lastEpisodesLinks = await (await homePage.listLastEpisodes).$$('a')
@@ -40,7 +43,8 @@ describe('The last episodes list', () => {
             lastEpisodesTitles[i] = await (await EpisodePage.episodeTitle).getText();
             await expect(lastEpisodesTitles[i]).toContain(names[i]);
             await expect(lastEpisodesTitles[i]).toContain(epNumber[i]);
-            await browser.back();
+            //await browser.pause(2000)
+            await homePage.clickHomePageLogoButton();
         }
 
 

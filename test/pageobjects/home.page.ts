@@ -1,4 +1,7 @@
 import Page from './page.ts'
+import allureReporter from '@wdio/allure-reporter'
+import { ChainablePromiseElement } from 'webdriverio'
+
 
 
 class HomePage extends Page {
@@ -10,6 +13,7 @@ class HomePage extends Page {
     get welcomeLabel() { return $('span.fa-chevron-down > span') }
     get registrationLink() { return $('a[href="/auth/sign_up"]') }
     get listLastEpisodes() { return $('ul.ListEpisodios') }
+    get homeButtonLogo() { return $('div.Logo img') }
 
 
 
@@ -28,8 +32,10 @@ class HomePage extends Page {
      *          after a successfully login process. 
      */
     public async getWelcomeText(): Promise<string> {
+        allureReporter.startStep("get 'Welcome' Text")
         const text = (await this.welcomeLabel).getText();
         console.log(text);
+        allureReporter.endStep()
         return text;
     }
 
@@ -37,7 +43,7 @@ class HomePage extends Page {
      * Method to press the button that display the login div
      */
     public async pressLoginButton() {
-        this.performClick(await this.loginButton);
+        this.performClick(this.loginButton);
     }
 
     /**
@@ -67,13 +73,13 @@ class HomePage extends Page {
      * @param password credential needed to login
      */
     public async typePassword(password: string) {
-        this.typeText(await this.password, password);
+        this.typeText(await (this.password), password);
     }
 
-    public async getAnimeNames(element: WebdriverIO.Element): Promise<string> {
-        const name = await element.getText();
-        return name;
-    }
+    /** public async getAnimeNames(element: WebdriverIO.Element): Promise<string> {
+         const name = await element.getText();
+         return name;s
+     }*/
 
     // public async getAllLastAnimesNames() {
     //     // 1. Get all elements matching the selector ul.ListEpisodios>li>a
@@ -86,9 +92,14 @@ class HomePage extends Page {
     //     return names;
     // }
 
-    public async clickLastEpisode(webElement: WebdriverIO.Element) {
+    public async clickLastEpisode(webElement: ChainablePromiseElement) {
         webElement.waitForClickable();
         await this.performClick(webElement);
+    }
+
+    public async clickHomePageLogoButton() {
+        this.homeButtonLogo.waitForClickable();
+        await this.performClick(await this.homeButtonLogo)
     }
 
 }

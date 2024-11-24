@@ -1,4 +1,5 @@
 import { browser } from '@wdio/globals'
+import { ChainablePromiseElement } from 'webdriverio'
 
 
 /**
@@ -21,10 +22,10 @@ export default class Page {
      * Method to click on a web element
      * @param element web element subject of the click
      */
-    protected async performClick(element: WebdriverIO.Element) {
+    protected async performClick(element: ChainablePromiseElement) {
         await element.moveTo();
         //await element.click();
-        await browser.execute((elem) => {
+        browser.execute((elem) => {
             // Use JavaScript to click the element
             elem.click();
         }, element);
@@ -36,7 +37,7 @@ export default class Page {
      * @param element web element where the text is going to be type
      * @param text string value to type
      */
-    protected typeText(element: WebdriverIO.Element, text: string) {
+    protected typeText(element: ChainablePromiseElement, text: string) {
         element.setValue(text);
     }
 

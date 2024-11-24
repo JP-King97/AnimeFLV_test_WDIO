@@ -31,7 +31,7 @@ export const config: Options.Testrunner = {
     //
     specs: [
         //'./test/specs/**/*.ts',
-        //'./test/specs/**/login.test.ts',
+        //./test/specs/**/login.test.ts'
         //'./test/specs/**/registration.test.ts',
         './test/specs/**/last.episodes.test.ts'
     ],
@@ -74,7 +74,7 @@ export const config: Options.Testrunner = {
     // Define all options that are relevant for the WebdriverIO instance here
     //
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    logLevel: 'info',
+    logLevel: 'error',
     //
     // Set specific log levels per logger
     // loggers:
@@ -101,7 +101,7 @@ export const config: Options.Testrunner = {
     // baseUrl: 'http://localhost:8080',
     //
     // Default timeout for all waitFor* commands.
-    waitforTimeout: 10000,
+    waitforTimeout: 50000,
     //
     // Default timeout in milliseconds for request
     // if browser driver or grid doesn't send response
@@ -137,13 +137,16 @@ export const config: Options.Testrunner = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: ['spec', ['allure', { outputDir: 'allure-results' }]],
-
+    reporters: [['allure', {
+        outputDir: 'allure-results',
+        disableWebdriverStepsReporting: true,
+        disableWebdriverScreenshotsReporting: true,
+    }]],
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
     mochaOpts: {
         ui: 'bdd',
-        timeout: 180000
+        timeout: 250000
     },
 
     //
