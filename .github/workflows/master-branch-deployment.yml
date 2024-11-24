@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+  workflow_dispatch:
 
 jobs:
   build:
@@ -18,9 +19,9 @@ jobs:
           node-version: "20.x"
       - name: Install dependencies
         run: npm install
-      - name: Run Nightwatch tests
+      - name: Run WDIO tests
         run: |
-          npm run wdio
+          xvfb-run --auto-servernum npm run wdio -- --env chrome
       - name: Get Allure history
         uses: actions/checkout@v4
         if: always()
