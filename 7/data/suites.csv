@@ -1,0 +1,3 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","9511","must contains 20 elements","","Wed Feb 26 08:41:18 GMT 2025","broken","Wed Feb 26 08:41:28 GMT 2025","","The last episodes list","",""
+"","48750","matches the miniature info with the episode page info","","Wed Feb 26 08:41:28 GMT 2025","passed","Wed Feb 26 08:42:17 GMT 2025","","The last episodes list","",""
